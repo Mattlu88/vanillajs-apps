@@ -5,12 +5,13 @@ const addEventListeners = () => {
 
 const toggleNavList = () => {
   const navList = document.querySelector("#nav-list");
-  const showLinks = navList.classList.contains("show-links");
-  if (!showLinks) {
-    navList.classList.add("show-links");
-  } else {
-    navList.classList.remove("show-links");
-  }
+//  const showLinks = navList.classList.contains("show-links");
+//  if (!showLinks) {
+//    navList.classList.add("show-links");
+//  } else {
+//    navList.classList.remove("show-links");
+//  }
+  navList.classList.toggle("show-links");
 }
 
 const handleToggleBtnClick = () => {
