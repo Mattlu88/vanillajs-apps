@@ -10,7 +10,7 @@ const menu = [
   {
     id: 2,
     title: "diner double",
-    category: "lunch",
+    category: "dinner",
     price: 13.99,
     img: "./asset/imgs/item-2.jpeg",
     desc: `vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats `,
@@ -77,42 +77,64 @@ const dishSection = document.querySelector(".dish-section");
 const dishDiv = document.querySelector(".dish");
 const menuBtn = document.querySelector(".menu-btn");
 const nav = document.querySelector(".nav");
-const filterBtns = document.querySelector(".filter").querySelectorAll("button");
+const filterDiv = document.querySelector(".filter");
 
-const setDishDiv = (dishDiv, dish) => {
-  const img = dishDiv.querySelector(".dish-img");
-  img.src = dish.img;
+const displayDishes = (dishes) => {
+  const allDishDivs = dishes.map((dish) => {
+    return `
+      <div class="dish">
+        <div class="img-container">
+          <img class="dish-img" src=${dish.img} />
+        </div>
+        <div class="dish-details">
+          <div class="head-text">
+            <p class="dish-name">${dish.title}</p>
+            <p class="price">$${dish.price}</p>
+          </div>
+          <div class="line"></div>
+          <p class="desc-text">${dish.desc}</p>
+        </div>
+     </div>
+    `
+  })
+  dishSection.innerHTML = allDishDivs.join("");
+};
 
-  const dishName = dishDiv.querySelector(".dish-name");
-  dishName.innerText = dish.title;
+const getDishCategories = (dishes) =>
+  dishes.reduce((categories, dish) => {
+    if (!categories.includes(dish.category)) {
+      return [...categories, dish.category];
+    } else {
+      return categories;
+    }
+  }, ["all"]);
 
-  const dishPrice = dishDiv.querySelector(".price");
-  dishPrice.innerText = "$" + dish.price;
+const displayFilterBtns = (dishes) => {
 
-  const dishDesc = dishDiv.querySelector(".desc-text");
-  dishDesc.innerText = dish.desc;
-}
+  const dishCategories = getDishCategories(dishes);
 
-const initDishSection = (dishes) => {
-  const allDishDivs = dishSection.querySelectorAll(".dish");
-  allDishDivs.forEach((div) => div.remove());
-  for (i = 0; i < dishes.length; i++) {
-    const newDishDiv = dishDiv.cloneNode(true);
-    setDishDiv(newDishDiv, dishes[i]);
-    dishSection.append(newDishDiv);
-  }
-}
+  const allFilterBtnsHtml = dishCategories.map((category) => {
+    return `
+      <button id=${category} class="btn">${category}</button>
+    `
+  });
 
-menuBtn.addEventListener("click", () => {
-  nav.classList.toggle("show-nav");
-})
+  filterDiv.innerHTML = allFilterBtnsHtml.join("");
+};
 
-window.onload = () => {
-  initDishSection(menu);
+
+window.addEventListener("DOMContentLoaded", () => {
+  displayDishes(menu);
+  displayFilterBtns(menu);
+  menuBtn.addEventListener("click", () => {
+    nav.classList.toggle("show-nav");
+  });
+
+  const filterBtns = filterDiv.querySelectorAll(".btn");
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const dishes = menu.filter((dish) => dish.category === btn.id)
-      initDishSection(dishes);
+      const dishes = menu.filter((dish) => dish.category === btn.id || btn.id === "all")
+      displayDishes(dishes);
     })
   });
-}
+});

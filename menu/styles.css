@@ -265,7 +265,7 @@ p {
   color: var(--clr-primary-5);
 }
 
-.line {
+.dish .line {
   width: 100%;
   margin: 0.5rem auto 1rem auto;
   border-top: 1px dotted var(--clr-grey-1); 
