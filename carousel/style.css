@@ -162,7 +162,6 @@ section {
 }
 .reviews {
   margin-bottom: 4rem;
-  display: none;
 }
 .reviews h2 {
   display: flex;
@@ -247,10 +246,4 @@ h4 {
   }
 }
 
-.container {
-  display: flex;
-}
 
-.active {
-  display: block;
-}
