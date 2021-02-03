@@ -1,7 +1,18 @@
 import view from "./view.js";
 import lib from "./lib.js";
 
-const colors = ["green", "red", "yellow", "gold", "silver", "violet", "maroon", "black", "white", "orange"];
+const colors = [
+  "green",
+  "red",
+  "yellow",
+  "gold",
+  "silver",
+  "violet",
+  "maroon",
+  "black",
+  "white",
+  "orange",
+];
 
 let currentColor;
 
@@ -10,13 +21,10 @@ const handleBtnClick = () => {
   while (color === currentColor) {
     color = lib.getRandomColor(colors);
   }
-  currentColor = color; 
+  currentColor = color;
   view.setBackgroundColor(currentColor);
   view.setColorText(currentColor);
-}
+};
 
-window.onload = () => {
-  let btn = document.getElementById("btn");
-  btn.addEventListener("click", handleBtnClick);
- // handleBtnClick();
-}
+let btn = document.getElementById("btn");
+btn.addEventListener("click", handleBtnClick);
