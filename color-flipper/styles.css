@@ -98,15 +98,15 @@ h4 {
 }
 
 h1 {
-  font-size: 3rem;
-}
-
-h2 {
   font-size: 2rem;
 }
 
+h2 {
+  font-size: 1.5rem;
+}
+
 h3 {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 h4 {
@@ -131,7 +131,7 @@ p {
   font-size: 0.875rem;
   border: 2px solid var(--clr-black);
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius);
 }
 
@@ -154,7 +154,7 @@ nav {
   background: var(--clr-white);
   height: 3rem;
   display: grid;
-  align-items: center;
+  place-items: center;
   box-shadow: var(--dark-shadow);
 }
 
@@ -176,13 +176,14 @@ nav {
   display: flex;
 }
 
-nav a{
- text-transform: capitalize; 
- font-weight: 700;
- font-size: 1rem;
- color: var(--clr-primary-1);
- letter-spacing: var(--spacing);
- margin-right: 1rem;
+nav a {
+  display: block;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--clr-primary-1);
+  letter-spacing: var(--spacing);
+  margin-right: 0.5rem;
 }
 
 nav a:hover {
@@ -208,4 +209,33 @@ main {
   color: var(--clr-black);
   padding: 1rem;
   margin-bottom: 2.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+
+  nav a {
+    font-size: 1rem;
+    margin-right: 2rem;
+  }
 }
