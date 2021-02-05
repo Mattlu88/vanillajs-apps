@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <video
+      id="bg-video"
+      playsinline
+      autoplay
+      muted
+      loop
+      poster="./asset/preloader.png"
+    >
+      <source src="./asset/video.mp4" type="video/mp4" />
+    </video>
+    <main>
+      <h1>video project</h1>
+      <section>
+        <div>
+          <button id="bg-video-control-btn">pause</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
